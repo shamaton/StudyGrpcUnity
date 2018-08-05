@@ -1,0 +1,1 @@
+protoc -I protos  --csharp_out HelloWorld --grpc_out HelloWorld protos/helloworld.proto --plugin=protoc-gen-grpc=../Grpc.Tools.1.8.0/tools/macosx_x64/grpc_csharp_plugin
