@@ -1,44 +1,33 @@
-﻿#if false
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class ClientController : MonoBehaviour {
-  void Update() {
-    if (Input.GetButtonDown("Fire1")) {
-      Say();
-    }
-  }
-
-  private void Say() {
-    Debug.Log("hello world");
-  }
-}
-#else
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using UnityEngine.UI;
 using Grpc.Core;
 using Helloworld;
 
 public class ClientController : MonoBehaviour {
-  void Update() {
-    if (Input.GetKeyDown(KeyCode.A)) {
-      Say();
-    }
+
+  public Button button;
+  public Text text;
+
+  public string ip = "127.0.0.1";
+  public string port = "9999";
+
+  private void Start() {
+    Debug.Log("start .....");
+    button.onClick.AddListener(Say);
   }
 
   private void Say() {
-    Debug.Log("hello world");
-    Channel channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
+    Debug.Log("say.....");
+    Channel channel = new Channel(ip + ":" + port, ChannelCredentials.Insecure);
 
     var client = new Greeter.GreeterClient(channel);
     string user = "you";
 
     var reply = client.SayHello(new HelloRequest { Name = user });
-    Debug.Log("Greeting: " + reply.Message);
+    text.text = "reply : " + reply.Message;
 
     channel.ShutdownAsync().Wait();
   }
 }
-#endif
