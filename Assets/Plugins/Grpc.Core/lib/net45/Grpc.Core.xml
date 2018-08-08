@@ -1413,7 +1413,6 @@
         <member name="T:Grpc.Core.Interceptors.CallInvokerExtensions">
             <summary>
             Extends the CallInvoker class to provide the interceptor facility on the client side.
-            This is an EXPERIMENTAL API.
             </summary>
         </member>
         <member name="M:Grpc.Core.Interceptors.CallInvokerExtensions.Intercept(Grpc.Core.CallInvoker,Grpc.Core.Interceptors.Interceptor)">
@@ -1474,7 +1473,6 @@
         <member name="T:Grpc.Core.Interceptors.ChannelExtensions">
             <summary>
             Provides extension methods to make it easy to register interceptors on Channel objects.
-            This is an EXPERIMENTAL API.
             </summary>
         </member>
         <member name="M:Grpc.Core.Interceptors.ChannelExtensions.Intercept(Grpc.Core.Channel,Grpc.Core.Interceptors.Interceptor)">
@@ -1530,7 +1528,6 @@
         <member name="T:Grpc.Core.Interceptors.ClientInterceptorContext`2">
             <summary>
             Carries along the context associated with intercepted invocations on the client side.
-            This is an EXPERIMENTAL API.
             </summary>
         </member>
         <member name="M:Grpc.Core.Interceptors.ClientInterceptorContext`2.#ctor(Grpc.Core.Method{`0,`1},System.String,Grpc.Core.CallOptions)">
@@ -1599,7 +1596,6 @@
         <member name="T:Grpc.Core.Interceptors.Interceptor">
             <summary>
             Serves as the base class for gRPC interceptors.
-            This is an EXPERIMENTAL API.
             </summary>
         </member>
         <member name="T:Grpc.Core.Interceptors.Interceptor.BlockingUnaryCallContinuation`2">
@@ -1924,14 +1920,12 @@
         <member name="T:Grpc.Core.Interceptors.ServerServiceDefinitionExtensions">
             <summary>
             Extends the ServerServiceDefinition class to add methods used to register interceptors on the server side.
-            This is an EXPERIMENTAL API.
             </summary>
         </member>
         <member name="M:Grpc.Core.Interceptors.ServerServiceDefinitionExtensions.Intercept(Grpc.Core.ServerServiceDefinition,Grpc.Core.Interceptors.Interceptor)">
             <summary>
             Returns a <see cref="T:Grpc.Core.ServerServiceDefinition" /> instance that
             intercepts incoming calls to the underlying service handler through the given interceptor.
-            This is an EXPERIMENTAL API.
             </summary>
             <param name="serverServiceDefinition">The <see cref="T:Grpc.Core.ServerServiceDefinition" /> instance to register interceptors on.</param>
             <param name="interceptor">The interceptor to intercept the incoming invocations with.</param>
@@ -1947,7 +1941,6 @@
             <summary>
             Returns a <see cref="T:Grpc.Core.ServerServiceDefinition" /> instance that
             intercepts incoming calls to the underlying service handler through the given interceptors.
-            This is an EXPERIMENTAL API.
             </summary>
             <param name="serverServiceDefinition">The <see cref="T:Grpc.Core.ServerServiceDefinition" /> instance to register interceptors on.</param>
             <param name="interceptors">
@@ -2497,6 +2490,12 @@
             WARNING: Unity support is experimental and work-in-progress. Don't expect it to work.
             </summary>
         </member>
+        <member name="M:Grpc.Core.Internal.NativeExtension.LoadNativeMethodsXamarin">
+            <summary>
+            Return native method delegates when running on the Xamarin platform.
+            WARNING: Xamarin support is experimental and work-in-progress. Don't expect it to work.
+            </summary>
+        </member>
         <member name="T:Grpc.Core.Internal.NativeLogRedirector">
             <summary>
             Logs from gRPC C core library can get lost if your application is not a console app.
@@ -2506,6 +2505,15 @@
         <member name="M:Grpc.Core.Internal.NativeLogRedirector.Redirect(Grpc.Core.Internal.NativeMethods)">
             <summary>
             Redirects logs from native gRPC C core library to a general logger.
+            </summary>
+        </member>
+        <member name="T:Grpc.Core.Internal.MonoPInvokeCallbackAttribute">
+            <summary>
+            Use this attribute to mark methods that will be called back from P/Invoke calls.
+            iOS (and probably other AOT platforms) needs to have delegates registered.
+            Instead of depending on Xamarin.iOS for this, we can just create our own,
+            the iOS runtime just checks for the type name.
+            See: https://docs.microsoft.com/en-gb/xamarin/ios/internals/limitations#reverse-callbacks
             </summary>
         </member>
         <member name="T:Grpc.Core.Internal.NativeMethods">
@@ -2543,6 +2551,22 @@
         <member name="P:Grpc.Core.Internal.PlatformApis.IsUnity">
             <summary>
             true if running on Unity platform.
+            </summary>
+        </member>
+        <member name="P:Grpc.Core.Internal.PlatformApis.IsXamarin">
+            <summary>
+            true if running on a Xamarin platform (either Xamarin.Android or Xamarin.iOS),
+            false otherwise.
+            </summary>
+        </member>
+        <member name="P:Grpc.Core.Internal.PlatformApis.IsXamarinIOS">
+            <summary>
+            true if running on Xamarin.iOS, false otherwise.
+            </summary>
+        </member>
+        <member name="P:Grpc.Core.Internal.PlatformApis.IsXamarinAndroid">
+            <summary>
+            true if running on Xamarin.Android, false otherwise.
             </summary>
         </member>
         <member name="P:Grpc.Core.Internal.PlatformApis.IsNetCore">
@@ -3327,7 +3351,7 @@
         </member>
         <member name="T:Grpc.Core.Server">
             <summary>
-            gRPC server. A single server can server arbitrary number of services and can listen on more than one ports.
+            gRPC server. A single server can serve an arbitrary number of services and can listen on more than one port.
             </summary>
         </member>
         <member name="M:Grpc.Core.Server.#ctor">
