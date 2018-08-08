@@ -55,8 +55,14 @@ public class ChatSample : MonoBehaviour {
     var req = new RequestAuthorize();
     req.Name = userName;
 
-    var res = client.Authorize(req);
-    sid = res.SessionId;
+    try {
+      var res = client.Authorize(req);
+      sid = res.SessionId;
+    }
+    catch (RpcException e) {
+      Debug.Log(ExceptionMsg(e));
+      return;
+    }
 
 
     Task.Run(() => Connect());
@@ -66,21 +72,26 @@ public class ChatSample : MonoBehaviour {
     var req = new RequestConnect();
     req.SessionId = sid;
 
-    using (var call = client.Connect(req)) {
-      while (await call.ResponseStream.MoveNext()) {
-        var stream = call.ResponseStream.Current;
-        if (stream.Join != null) {
-          Debug.Log("join : " + stream.Join.Name);
+    try {
+      using (var call = client.Connect(req)) {
+        while (await call.ResponseStream.MoveNext()) {
+          var stream = call.ResponseStream.Current;
+          if (stream.Join != null) {
+            Debug.Log("join : " + stream.Join.Name);
+          }
+          else if (stream.Leave != null) {
+            Debug.Log("leave : " + stream.Leave.Name);
+          }
+          else if (stream.Log != null) {
+            Debug.Log("Say :" + stream.Log.Name + " - " + stream.Log.Message);
+            recvMsg = stream.Log.Name + " - " + stream.Log.Message;
+          }
         }
-        else if (stream.Leave != null) {
-          Debug.Log("leave : " + stream.Leave.Name);
-        }
-        else if (stream.Log != null) {
-          Debug.Log("Say :" + stream.Log.Name + " - " + stream.Log.Message);
-          recvMsg = stream.Log.Name + " - " + stream.Log.Message;
-        }
+        Debug.Log("server accepted your leave signal");
       }
-      Debug.Log("server accepted your leave signal");
+    }
+    catch (RpcException e) {
+      Debug.Log(ExceptionMsg(e));
     }
 
     channel.ShutdownAsync().Wait();
@@ -91,14 +102,28 @@ public class ChatSample : MonoBehaviour {
     req.SessionId = sid;
     req.Message = userName + " -> " + System.DateTime.Now.ToString();
 
-    /*var res = */client.Say(req);
+    try {
+      /*var res = */client.Say(req);
+    }
+    catch (RpcException e) {
+      Debug.Log(ExceptionMsg(e));
+    }
   }
 
   private void Leave() {
     var req = new CommandLeave();
     req.SessionId = sid;
 
-    /*var res = */client.Leave(req);
+    try {
+      /*var res = */client.Leave(req);
+    }
+    catch (RpcException e) {
+      Debug.Log(ExceptionMsg(e));
+    }
+  }
+
+  private string ExceptionMsg(RpcException e) {
+    return "[CODE] " + e.Status.StatusCode + " : " + (int)e.Status.StatusCode + " [MSG] " + e.Status.Detail;
   }
 
 }
