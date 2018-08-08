@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Grpc.Core;
-using Helloworld;
+using Pj.Grpc.Sample;
 
 public class ClientController : MonoBehaviour {
 

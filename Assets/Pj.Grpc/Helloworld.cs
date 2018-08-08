@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace Helloworld {
+namespace Pj.Grpc.Sample {
 
   /// <summary>Holder for reflection information generated from helloworld.proto</summary>
   public static partial class HelloworldReflection {
@@ -27,14 +27,13 @@ namespace Helloworld {
             "ChBoZWxsb3dvcmxkLnByb3RvEgpoZWxsb3dvcmxkIhwKDEhlbGxvUmVxdWVz",
             "dBIMCgRuYW1lGAEgASgJIh0KCkhlbGxvUmVwbHkSDwoHbWVzc2FnZRgBIAEo",
             "CTJJCgdHcmVldGVyEj4KCFNheUhlbGxvEhguaGVsbG93b3JsZC5IZWxsb1Jl",
-            "cXVlc3QaFi5oZWxsb3dvcmxkLkhlbGxvUmVwbHkiAEI2Chtpby5ncnBjLmV4",
-            "YW1wbGVzLmhlbGxvd29ybGRCD0hlbGxvV29ybGRQcm90b1ABogIDSExXYgZw",
-            "cm90bzM="));
+            "cXVlc3QaFi5oZWxsb3dvcmxkLkhlbGxvUmVwbHkiAEIRqgIOUGouR3JwYy5T",
+            "YW1wbGViBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Helloworld.HelloRequest), global::Helloworld.HelloRequest.Parser, new[]{ "Name" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Helloworld.HelloReply), global::Helloworld.HelloReply.Parser, new[]{ "Message" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pj.Grpc.Sample.HelloRequest), global::Pj.Grpc.Sample.HelloRequest.Parser, new[]{ "Name" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pj.Grpc.Sample.HelloReply), global::Pj.Grpc.Sample.HelloReply.Parser, new[]{ "Message" }, null, null, null)
           }));
     }
     #endregion
@@ -52,7 +51,7 @@ namespace Helloworld {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Helloworld.HelloworldReflection.Descriptor.MessageTypes[0]; }
+      get { return global::Pj.Grpc.Sample.HelloworldReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -184,7 +183,7 @@ namespace Helloworld {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Helloworld.HelloworldReflection.Descriptor.MessageTypes[1]; }
+      get { return global::Pj.Grpc.Sample.HelloworldReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

@@ -22,7 +22,7 @@
 
 using grpc = global::Grpc.Core;
 
-namespace Helloworld {
+namespace Pj.Grpc.Sample {
   /// <summary>
   /// The greeting service definition.
   /// </summary>
@@ -30,10 +30,10 @@ namespace Helloworld {
   {
     static readonly string __ServiceName = "helloworld.Greeter";
 
-    static readonly grpc::Marshaller<global::Helloworld.HelloRequest> __Marshaller_HelloRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Helloworld.HelloRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Helloworld.HelloReply> __Marshaller_HelloReply = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Helloworld.HelloReply.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Pj.Grpc.Sample.HelloRequest> __Marshaller_HelloRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Pj.Grpc.Sample.HelloRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Pj.Grpc.Sample.HelloReply> __Marshaller_HelloReply = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Pj.Grpc.Sample.HelloReply.Parser.ParseFrom);
 
-    static readonly grpc::Method<global::Helloworld.HelloRequest, global::Helloworld.HelloReply> __Method_SayHello = new grpc::Method<global::Helloworld.HelloRequest, global::Helloworld.HelloReply>(
+    static readonly grpc::Method<global::Pj.Grpc.Sample.HelloRequest, global::Pj.Grpc.Sample.HelloReply> __Method_SayHello = new grpc::Method<global::Pj.Grpc.Sample.HelloRequest, global::Pj.Grpc.Sample.HelloReply>(
         grpc::MethodType.Unary,
         __ServiceName,
         "SayHello",
@@ -43,7 +43,7 @@ namespace Helloworld {
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
     {
-      get { return global::Helloworld.HelloworldReflection.Descriptor.Services[0]; }
+      get { return global::Pj.Grpc.Sample.HelloworldReflection.Descriptor.Services[0]; }
     }
 
     /// <summary>Base class for server-side implementations of Greeter</summary>
@@ -55,7 +55,7 @@ namespace Helloworld {
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
       /// <returns>The response to send back to the client (wrapped by a task).</returns>
-      public virtual global::System.Threading.Tasks.Task<global::Helloworld.HelloReply> SayHello(global::Helloworld.HelloRequest request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::Pj.Grpc.Sample.HelloReply> SayHello(global::Pj.Grpc.Sample.HelloRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -93,7 +93,7 @@ namespace Helloworld {
       /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
       /// <param name="cancellationToken">An optional token for canceling the call.</param>
       /// <returns>The response received from the server.</returns>
-      public virtual global::Helloworld.HelloReply SayHello(global::Helloworld.HelloRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual global::Pj.Grpc.Sample.HelloReply SayHello(global::Pj.Grpc.Sample.HelloRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return SayHello(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
@@ -103,7 +103,7 @@ namespace Helloworld {
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
       /// <returns>The response received from the server.</returns>
-      public virtual global::Helloworld.HelloReply SayHello(global::Helloworld.HelloRequest request, grpc::CallOptions options)
+      public virtual global::Pj.Grpc.Sample.HelloReply SayHello(global::Pj.Grpc.Sample.HelloRequest request, grpc::CallOptions options)
       {
         return CallInvoker.BlockingUnaryCall(__Method_SayHello, null, options, request);
       }
@@ -115,7 +115,7 @@ namespace Helloworld {
       /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
       /// <param name="cancellationToken">An optional token for canceling the call.</param>
       /// <returns>The call object.</returns>
-      public virtual grpc::AsyncUnaryCall<global::Helloworld.HelloReply> SayHelloAsync(global::Helloworld.HelloRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual grpc::AsyncUnaryCall<global::Pj.Grpc.Sample.HelloReply> SayHelloAsync(global::Pj.Grpc.Sample.HelloRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return SayHelloAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
@@ -125,7 +125,7 @@ namespace Helloworld {
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
       /// <returns>The call object.</returns>
-      public virtual grpc::AsyncUnaryCall<global::Helloworld.HelloReply> SayHelloAsync(global::Helloworld.HelloRequest request, grpc::CallOptions options)
+      public virtual grpc::AsyncUnaryCall<global::Pj.Grpc.Sample.HelloReply> SayHelloAsync(global::Pj.Grpc.Sample.HelloRequest request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_SayHello, null, options, request);
       }
