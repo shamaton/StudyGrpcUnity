@@ -1,3 +1,2 @@
 brew install protobuf
-
-protoc -I Assets/protos --csharp_out Assets/HelloWorld --grpc_out Assets/HelloWorld Assets/protos/helloworld.proto --plugin=protoc-gen-grpc=tools/Grpc.Tools.1.13.1/tools/macosx_x64/grpc_csharp_plugin
+protoc -I protos --csharp_out Assets/Pj.Grpc --grpc_out Assets/Pj.Grpc protos/*.proto --plugin=protoc-gen-grpc=tools/Grpc.Tools.1.13.1/tools/macosx_x64/grpc_csharp_plugin
