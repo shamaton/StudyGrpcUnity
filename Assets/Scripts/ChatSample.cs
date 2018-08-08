@@ -36,6 +36,13 @@ public class ChatSample : MonoBehaviour {
     StartCoroutine(setMsg());
   }
 
+  private void OnDestroy() {
+    if (channel != null) {
+      channel.ShutdownAsync().Wait();
+      Debug.Log("on destroy shutdown");
+    }
+  }
+
   private IEnumerator setMsg() {
     var w = new WaitForSeconds(0.1f);
     while(true) {
@@ -95,6 +102,7 @@ public class ChatSample : MonoBehaviour {
     }
 
     channel.ShutdownAsync().Wait();
+    channel = null;
   }
 
   private void Say() {
