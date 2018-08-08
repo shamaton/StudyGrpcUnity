@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using Grpc.Core;
 using Pj.Grpc.Sample;
 
-public class ClientController : MonoBehaviour {
+public class Sample : MonoBehaviour {
 
   public Button button;
   public Text text;
